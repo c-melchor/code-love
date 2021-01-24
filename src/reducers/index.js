@@ -1,11 +1,11 @@
-import { ADD_TODO } from "../actions";
+import { ADD_TODO, COMPLETE_TODO } from "../actions";
 
 export const initialState = {
   todos: [
-    { item: "Walk the dog", done: true, id: 1 },
+    { item: "Walk the dog", done: false, id: 1 },
     { item: "Buy groceries", done: false, id: 2 },
-    { item: "Wash the car", done: true, id: 3 },
-    { item: "Redo repos to practice coding", done: true, id: 4 }
+    { item: "Wash the car", done: false, id: 3 },
+    { item: "Redo repos to practice coding", done: false, id: 4 }
   ]
 };
 
@@ -13,6 +13,19 @@ export const reducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_TODO:
       return { ...state, todos: [...state.todos, action.payload] };
+    case COMPLETE_TODO:
+      return {
+        ...state,
+        todos: [
+          ...state.todos.map(todo => {
+            if (todo.id === action.payload.id) {
+              return { ...todo, done: action.payload.checked };
+            } else {
+              return todo;
+            }
+          })
+        ]
+      };
     default:
       return state;
   }
