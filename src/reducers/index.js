@@ -1,4 +1,4 @@
-import { ADD_TODO, COMPLETE_TODO } from "../actions";
+import { ADD_TODO, COMPLETE_TODO, EDITED_TODO } from "../actions";
 
 export const initialState = {
   todos: [
@@ -26,6 +26,16 @@ export const reducer = (state = initialState, action) => {
           })
         ]
       };
+    // case EDITED_TODO:
+    //   return {
+    //     ...state.todos.map(todo => {
+    //       if (todo.id === action.payload.id) {
+    //         return { ...todo, item: action.payload.value };
+    //       } else {
+    //         return todo;
+    //       }
+    //     })
+    //   }
     default:
       return state;
   }
