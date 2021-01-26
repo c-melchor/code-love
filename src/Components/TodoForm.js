@@ -11,12 +11,21 @@ const StyledForm = styled.form`
   margin-top: 2rem;
 
   .btn {
-    background-color: pink;
+    background-color: #d99830;
     color: white;
     padding: 7px;
     width: 7%;
     height: 3%;
     margin-left: 0.5rem;
+  }
+
+  @media (max-width: 750px) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .btn {
+      width: 20%;
+    }
   }
 `;
 

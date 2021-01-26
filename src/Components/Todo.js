@@ -12,25 +12,39 @@ const StyledTodos = styled.div`
   align-items: center;
 
   .smallerDiv {
+    border: 1px solid black;
+    background-color: white;
     width: 20%;
+    padding: 5px;
     display: flex;
     justify-content: space-around;
     justify-items: center;
     align-items: baseline;
     margin-top: 1rem;
   }
+  .smallerDiv p {
+    background-color: white;
+  }
 
   .btn {
-    background-color: pink;
+    background-color: #d99830;
     color: white;
     padding: 7px;
     width: 4%;
     height: 3%;
+    margin-top: 0.5rem;
     text-align: center;
   }
 
   @media (max-width: 750px) {
-    color: red;
+    .smallerDiv {
+      justify-content: space-between;
+      width: 60%;
+    }
+    .btn {
+      width: 15%;
+      padding: 3px;
+    }
   }
 `;
 
@@ -74,6 +88,7 @@ function Todo(props) {
               disabled={props.todo.done ? true : false}
             />
           </div>
+
           <button onClick={onEdit} className="btn">
             Edit
           </button>

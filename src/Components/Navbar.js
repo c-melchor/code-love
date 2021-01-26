@@ -2,7 +2,6 @@ import React from "react";
 import styled from "styled-components";
 
 const StyledDiv = styled.div`
-  color: red;
   display: flex;
 
   .list {
@@ -15,12 +14,17 @@ const StyledDiv = styled.div`
   }
 
   a {
+    color: black;
     text-decoration: none;
-    display: flex;
     margin-left: 1rem;
     padding: 5px;
     border: 1px solid black;
     border-radius: 5px;
+
+    @media (max-width: 750px) {
+      justify-content: space-around;
+      margin: 0 auto;
+    }
   }
 `;
 

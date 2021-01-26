@@ -10,7 +10,6 @@ export const initialState = {
 };
 
 export const reducer = (state = initialState, action) => {
-  console.log(action);
   switch (action.type) {
     case ADD_TODO:
       return { ...state, todos: [...state.todos, action.payload] };
@@ -28,7 +27,6 @@ export const reducer = (state = initialState, action) => {
         ]
       };
     case EDITED_TODO:
-      console.log(action.payload);
       return {
         ...state,
         todos: state.todos.map(todo => {

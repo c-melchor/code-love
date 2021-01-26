@@ -2,6 +2,7 @@ import { Switch, Route } from "react-router-dom";
 import Home from "./Components/Home";
 import Navbar from "./Components/Navbar";
 import TodoList from "./Components/TodoList";
+import "../src/index.css";
 
 function App() {
   return (
