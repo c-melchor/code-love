@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
-import { completeTodo } from "../actions";
+import { editTodo, completeTodo } from "../actions";
 import styled from "styled-components";
 
 const StyledTodos = styled.div`
@@ -28,10 +28,17 @@ const StyledTodos = styled.div`
     height: 3%;
     text-align: center;
   }
+
+  @media (max-width: 750px) {
+    color: red;
+  }
 `;
 
 function Todo(props) {
   const [editing, setEditing] = useState(false);
+  const [text, setText] = useState({
+    item: props.todo.item || ""
+  });
 
   const onEdit = e => {
     setEditing(!editing);
@@ -41,6 +48,16 @@ function Todo(props) {
     const target = e.target;
     const value = target.type === "checkbox" ? target.checked : target.value;
     props.completeTodo({ done: value, id: props.todo.id });
+  };
+
+  const onEditChange = e => {
+    setText(e.target.value);
+  };
+
+  const saveEdit = e => {
+    e.preventDefault();
+    props.editTodo({ id: props.todo.id, item: text });
+    setEditing(!editing);
   };
 
   return (
@@ -65,14 +82,14 @@ function Todo(props) {
         <StyledTodos>
           <input
             type="text"
-            value={props.todo.item}
-            name="todo"
-            onChange={onChange}
+            name="item"
+            onChange={onEditChange}
+            value={text.item}
           />
           <button onClick={onEdit} className="btn">
             Cancel
           </button>
-          <button type="submit" className="btn">
+          <button type="submit" onClick={saveEdit} className="btn">
             Save
           </button>
         </StyledTodos>
@@ -81,4 +98,4 @@ function Todo(props) {
   );
 }
 
-export default connect(null, { completeTodo })(Todo);
+export default connect(null, { editTodo, completeTodo })(Todo);
