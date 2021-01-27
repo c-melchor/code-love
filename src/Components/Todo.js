@@ -29,9 +29,7 @@ const StyledTodos = styled.div`
   .btn {
     background-color: #d99830;
     color: white;
-    padding: 7px;
-    width: 4%;
-    height: 3%;
+    padding: 5px;
     margin-top: 0.5rem;
     text-align: center;
   }
@@ -41,10 +39,7 @@ const StyledTodos = styled.div`
       justify-content: space-between;
       width: 60%;
     }
-    .btn {
-      width: 15%;
-      padding: 3px;
-    }
+    
   }
 `;
 
@@ -94,21 +89,21 @@ function Todo(props) {
           </button>
         </StyledTodos>
       ) : (
-        <StyledTodos>
-          <input
-            type="text"
-            name="item"
-            onChange={onEditChange}
-            value={text.item}
-          />
-          <button onClick={onEdit} className="btn">
-            Cancel
+          <StyledTodos>
+            <input
+              type="text"
+              name="item"
+              onChange={onEditChange}
+              value={text.item}
+            />
+            <button onClick={onEdit} className="btn">
+              Cancel
           </button>
-          <button type="submit" onClick={saveEdit} className="btn">
-            Save
+            <button type="submit" onClick={saveEdit} className="btn">
+              Save
           </button>
-        </StyledTodos>
-      )}
+          </StyledTodos>
+        )}
     </div>
   );
 }
