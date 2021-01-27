@@ -47,4 +47,4 @@ export default function Navbar() {
       </ul>
     </StyledDiv>
   );
-}
+};

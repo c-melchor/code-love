@@ -23,6 +23,7 @@ const StyledForm = styled.form`
     display: flex;
     flex-direction: column;
     align-items: center;
+
     .btn {
       width: 20%;
     }
@@ -62,7 +63,8 @@ function TodoForm(props) {
       </StyledForm>
     </div>
   );
-}
+};
+
 const mapStateToProps = state => ({
   todos: state.todos
 });

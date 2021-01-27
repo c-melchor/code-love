@@ -53,12 +53,6 @@ function Todo(props) {
     setEditing(!editing);
   };
 
-  const onChange = e => {
-    const target = e.target;
-    const value = target.type === "checkbox" ? target.checked : target.value;
-    props.completeTodo({ done: value, id: props.todo.id });
-  };
-
   const onEditChange = e => {
     setText(e.target.value);
   };
@@ -67,6 +61,12 @@ function Todo(props) {
     e.preventDefault();
     props.editTodo({ id: props.todo.id, item: text });
     setEditing(!editing);
+  };
+
+  const onChange = e => {
+    const target = e.target;
+    const value = target.type === "checkbox" ? target.checked : target.value;
+    props.completeTodo({ done: value, id: props.todo.id });
   };
 
   return (
